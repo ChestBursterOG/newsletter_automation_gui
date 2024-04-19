@@ -47,13 +47,13 @@ const EmailScheduler = () => {
     }
   };
 
-  // Efekt pobierania zaplanowanych wiadomości co 15 sekund
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchScheduledEmails();
     }, 15000);
 
-    // Wyczyszczenie interwału przy odmontowaniu komponentu
+    
     return () => clearInterval(intervalId);
   }, []);
 
@@ -75,13 +75,13 @@ const EmailScheduler = () => {
   };
 
   const handleSendButtonClick = async () => {
-    setLoading(true); // Ustawiamy stan loading na true, aby pokazać animację
+    setLoading(true); 
 
     try {
       if (sendLater) {
-        await scheduleEmail(); // Jeśli wybrano opcję "Wyślij później", wysyłamy dane do endpointu do planowania
+        await scheduleEmail(); 
       } else {
-        await sendData(); // W przeciwnym razie wysyłamy dane do endpointu do natychmiastowego wysyłania
+        await sendData(); 
       }
   
       // Po udanym wysłaniu, pobieramy listę zaplanowanych wiadomości
@@ -89,7 +89,7 @@ const EmailScheduler = () => {
     } catch (error) {
       console.error('Błąd podczas wysyłania wiadomości:', error);
     } finally {
-      setLoading(false); // Ustawiamy stan loading na false po zakończeniu
+      setLoading(false); 
     }
   };
 
@@ -132,7 +132,7 @@ const EmailScheduler = () => {
         setSnackbarMessage('Wystąpił błąd podczas planowania wysyłania wiadomości.');
         setSnackbarOpen(true);
     } finally {
-        setLoading(false); // Ustawiamy stan loading na false, aby zatrzymać animację
+        setLoading(false); 
     }
 };
 
@@ -176,7 +176,7 @@ const sendData = async () => {
           setSnackbarMessage('Wystąpił błąd podczas wysyłania e-maila.');
           setSnackbarOpen(true);
       } finally {
-          setLoading(false); // Ustawiamy stan loading na false, aby zatrzymać animację
+          setLoading(false); 
       }
   } else {
       try {
@@ -206,7 +206,7 @@ const sendData = async () => {
           setSnackbarMessage('Wystąpił błąd podczas wysyłania e-maila z załącznikami.');
           setSnackbarOpen(true);
       } finally {
-          setLoading(false); // Ustawiamy stan loading na false, aby zatrzymać animację
+          setLoading(false); 
       }
   }
 };
